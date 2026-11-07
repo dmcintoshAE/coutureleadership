@@ -1,8 +1,10 @@
 {
+  "cleanUrls": true,
   "rewrites": [
     { "source": "/", "destination": "/dist/public/index.html" },
     { "source": "/app", "destination": "/dist/public/app.html" },
+    { "source": "/app/(.*)", "destination": "/dist/public/app.html" },
     { "source": "/api/coach", "destination": "/api/coach.js" },
-    { "source": "/:match*", "destination": "/dist/public/:match*" }
+    { "source": "/((?!api/).*)", "destination": "/dist/public/$1" }
   ]
 }
