@@ -1,0 +1,12 @@
+{
+  "name": "coutureleadership",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "test": "node --test scoring.test.js simulation.test.js simulator.test.js career.test.js analytics.test.js dossier.test.js coach.test.js routes.test.js",
+    "docker:build": "docker build -t coutureleadership .",
+    "docker:run": "docker run -p 127.0.0.1:3002:3002 coutureleadership",
+    "start": "node dist/index.js",
+    "docker:verify": "node docker-verify.js"
+  }
+}

@@ -1,0 +1,10 @@
+﻿services:
+  coutureleadership:
+    build: .
+    ports:
+      - "127.0.0.1:3002:3002"
+    environment:
+      OPENAI_API_KEY: "${OPENAI_API_KEY:-}"
+      OPENAI_MODEL: "${OPENAI_MODEL:-}"
+      DATABASE_URL: "${DATABASE_URL:-postgresql://postgres:secret@host.docker.internal:5432/postgres?sslmode=disable}"
+    restart: unless-stopped
