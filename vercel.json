@@ -1,0 +1,9 @@
+﻿{
+  "version": 2,
+  "rewrites": [
+    { "source": "/", "destination": "/dist/public/index.html" },
+    { "source": "/app", "destination": "/dist/public/app.html" },
+    { "source": "/api/coach", "destination": "/api/coach.js" },
+    { "source": "/(.*)", "destination": "/dist/public/$1" }
+  ]
+}
