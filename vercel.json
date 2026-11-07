@@ -1,10 +1,8 @@
 {
+  "outputDirectory": "dist/public",
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/", "destination": "/dist/public/index.html" },
-    { "source": "/app", "destination": "/dist/public/app.html" },
-    { "source": "/app/(.*)", "destination": "/dist/public/app.html" },
-    { "source": "/api/coach", "destination": "/api/coach.js" },
-    { "source": "/((?!api/).*)", "destination": "/dist/public/$1" }
+    { "source": "/app", "destination": "/app.html" },
+    { "source": "/api/coach", "destination": "/api/coach" }
   ]
 }
