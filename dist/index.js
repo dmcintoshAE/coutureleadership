@@ -32,7 +32,7 @@ function createServer(options) {
 }
 
 if (require.main === module) {
-  createAuth().seedAdmins();
+  if (!process.env.DATABASE_URL) createAuth().seedAdmins();
   const port = Number(process.env.PORT || 3002);
   const host = process.env.HOST || '127.0.0.1';
   createServer().listen(port, host, () => {

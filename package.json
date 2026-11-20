@@ -7,6 +7,10 @@
     "docker:build": "docker build -t coutureleadership .",
     "docker:run": "docker run -p 127.0.0.1:3002:3002 coutureleadership",
     "start": "node dist/index.js",
-    "docker:verify": "node docker-verify.js"
+    "docker:verify": "node docker-verify.js",
+    "test:postgres": "node --test auth-postgres.test.js"
+  },
+  "dependencies": {
+    "pg": "^8.23.1"
   }
 }

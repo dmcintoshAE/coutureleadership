@@ -20,7 +20,7 @@ function createCoachHandler({ env = process.env, fetchImpl = globalThis.fetch } 
       try { input = JSON.parse(body); } catch { return send(400,{error:'Invalid JSON request.'}); }
       const scenario = scenarios.find(s => s.id === input?.scenarioId);
       if (!scenario || !Array.isArray(input.choices) || input.choices.length !== scenario.rounds.length || input.choices.some((c,i) => !Number.isInteger(c) || !scenario.rounds[i].options[c]) || typeof input.reflection !== 'string' || input.reflection.length > 3000) return send(400,{error:'Provide a completed scenario and a reflection of up to 3000 characters.'});
-      const account = auth.current(req);
+      const account = await auth.current(req);
       const paidAccount = auth.paid(account);
       if (account && !paidAccount) return send(403,{error:'Live coaching requires a paid membership.'});
       if (!paidAccount && env.COACH_MEMBERSHIP_TOKEN && req.headers.authorization !== `Bearer ${env.COACH_MEMBERSHIP_TOKEN}`) return send(403,{error:'Eligible paid membership is required for live executive coaching. Explore membership options; authored demos remain available.'});

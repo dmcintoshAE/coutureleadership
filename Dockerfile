@@ -4,6 +4,8 @@ COPY dist/ ./dist/
 
 FROM node:24-slim
 WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
 COPY --from=build /app/dist ./dist
 RUN mkdir -p /data/speaking-inquiries /data/accounts && chown -R node:node /data
 USER node
