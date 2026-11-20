@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict');
 const {scenarios,outcome}=require('./dist/public/simulation');
 test('every scenario path has consequences and bounded outcome indicators',()=>{
- assert.equal(scenarios.length,9);
+ assert.equal(scenarios.length,12);
  assert.equal(new Set(scenarios.map(s=>s.id)).size,scenarios.length);
  for(const scenario of scenarios){
   for(const field of ['id','name','category','time','summary','context','stakeholders'])assert.ok(typeof scenario[field]==='string' && scenario[field].trim(),field);

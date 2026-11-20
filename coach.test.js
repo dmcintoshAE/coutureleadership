@@ -43,7 +43,8 @@ test('expanded scenarios use their own authoritative context and decisions for c
   }},async base=>{
    const response=await post(base,{scenarioId:scenario.id,choices:[0,1,2],reflection:''});
    assert.equal(response.status,200);
-   for(let i=0;i<3;i++)assert.equal(input.decisions[i].action,scenario.rounds[i].options[i][0]);
+   for(let i=0;i<3;i++)assert.deepEqual(input.decisions[i],{prompt:scenario.rounds[i].prompt,action:scenario.rounds[i].options[i][0],consequence:scenario.rounds[i].options[i][3]});
+   assert.equal(input.context,scenario.context);assert.equal(input.stakeholders,scenario.stakeholders);assert.equal(input.scenario,scenario.name);
   });
  }
 });

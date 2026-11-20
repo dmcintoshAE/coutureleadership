@@ -11,7 +11,14 @@
     }
     return output;
   }
-  const api = { score, sanitize };
+  function pillarScores(responses) {
+    const clean = sanitize(responses);
+    return ['Purpose','Precision','Presence','Tailoring','Craftsmanship'].map((name,i) => {
+      const responses = [clean[i*3],clean[i*3+1],clean[i*3+2]];
+      return {name, complete:responses.every(Number.isInteger), score:score(responses)};
+    });
+  }
+  const api = { score, sanitize, pillarScores };
   if (typeof module !== 'undefined') module.exports = api;
   else root.LeadershipScoring = api;
 })(typeof window !== 'undefined' ? window : globalThis);

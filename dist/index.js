@@ -6,16 +6,22 @@ try { process.loadEnvFile(envPath); } catch (e) {
 
 const http = require('node:http');
 const fs = require('node:fs');
+const { createAuth } = require('./auth');
 const { createCoachHandler } = require('./coach');
+const { createSpeakingHandler } = require('./speaking-inquiry');
 const root = path.join(__dirname, 'public');
 
 function createServer(options) {
+  const auth = createAuth(options);
+  const speaking = createSpeakingHandler(options?.speaking);
   const coach = createCoachHandler({ env: process.env, ...options });
   return http.createServer((req, res) => {
     const pathname = new URL(req.url, 'http://localhost').pathname;
+    if (pathname.startsWith('/api/auth/')) return void auth.handler(req,res);
+    if (pathname === '/api/speaking-inquiry') return void speaking(req,res);
     if (pathname === '/api/coach') return void coach(req, res);
     const workspaceRoute = /^\/app(?:\/(?:diagnostic|report|simulator|career|analytics))?\/?$/.test(pathname);
-    const file = path.join(root, pathname === '/' ? 'index.html' : workspaceRoute ? 'workspace.html' : pathname);
+    const file = path.join(root, pathname === '/' ? 'index.html' : workspaceRoute ? 'workspace.html' : /^\/(?:login|auth)\/?$/.test(pathname) ? 'login.html' : pathname);
     if (!file.startsWith(root + path.sep)) { res.writeHead(403); return res.end(); }
     fs.readFile(file, (error, data) => {
       if (error) { res.writeHead(404); return res.end('Not found'); }
@@ -26,6 +32,7 @@ function createServer(options) {
 }
 
 if (require.main === module) {
+  createAuth().seedAdmins();
   const port = Number(process.env.PORT || 3002);
   const host = process.env.HOST || '127.0.0.1';
   createServer().listen(port, host, () => {

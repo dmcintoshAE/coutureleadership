@@ -2,7 +2,33 @@
   "outputDirectory": "dist/public",
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/app", "destination": "/app.html" },
-    { "source": "/api/coach", "destination": "/api/coach" }
+    {
+      "source": "/login",
+      "destination": "/login.html"
+    },
+    {
+      "source": "/auth",
+      "destination": "/login.html"
+    },
+    {
+      "source": "/api/auth/:action",
+      "destination": "/api/auth?action=:action"
+    },
+    {
+      "source": "/app/:path*",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/api/speaking-inquiry",
+      "destination": "/api/speaking-inquiry"
+    },
+    {
+      "source": "/app",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/api/coach",
+      "destination": "/api/coach"
+    }
   ]
 }

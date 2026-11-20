@@ -3,8 +3,18 @@
     build: .
     ports:
       - "127.0.0.1:3002:3002"
+    volumes:
+      - accounts-data:/data/accounts
+      - speaking-inquiries:/data/speaking-inquiries
     environment:
+      ACCOUNTS_DIR: /data/accounts
+      SPEAKING_INQUIRY_DIR: /data/speaking-inquiries
+      REQUIRE_PAID_COACH: "false"
+      COACH_MEMBERSHIP_TOKEN: "${COACH_MEMBERSHIP_TOKEN:-}"
       OPENAI_API_KEY: "${OPENAI_API_KEY:-}"
       OPENAI_MODEL: "${OPENAI_MODEL:-}"
       DATABASE_URL: "${DATABASE_URL:-postgresql://postgres:secret@host.docker.internal:5432/postgres?sslmode=disable}"
     restart: unless-stopped
+volumes:
+  accounts-data:
+  speaking-inquiries:

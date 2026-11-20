@@ -40,16 +40,16 @@ function complete(app){app.click({sim:'growth'});for(let i=0;i<3;i++){app.click(
 const settle=()=>new Promise(resolve=>setImmediate(resolve));
 test('live coach sends reflection only on request, escapes output and prevents duplicate requests',async()=>{
  const calls=[];let resolve;
- const app=setup({fetch:(...args)=>{calls.push(args);return new Promise(done=>resolve=done);}});
+ const app=setup({DiscoveryIntake:{context:()=>({firstName:'Executive'}),coachHeaders:()=>({Authorization:'Bearer member-test'})},fetch:(...args)=>{calls.push(args);return new Promise(done=>resolve=done);}});
  complete(app);assert.equal(calls.length,0);app.note('My next step');app.click({sim:'coach'});app.click({sim:'coach'});
- assert.equal(calls.length,1);assert.equal(JSON.parse(calls[0][1].body).reflection,'My next step');assert.match(app.host.innerHTML,/Preparing your coaching/);
+ assert.equal(calls.length,1);assert.equal(calls[0][1].headers.Authorization,'Bearer member-test');assert.equal(JSON.parse(calls[0][1].body).participantContext.firstName,'Executive');assert.equal(JSON.parse(calls[0][1].body).reflection,'My next step');assert.match(app.host.innerHTML,/Preparing your coaching/);
  resolve({ok:true,json:async()=>({text:'<script>bad()</script>\nReflect on trust.'})});await settle();
  assert.match(app.host.innerHTML,/&lt;script&gt;/);assert.doesNotMatch(app.host.innerHTML,/<script>/);assert.match(app.host.innerHTML,/Refresh coaching/);
 });
 test('coach failures can be retried and late results cannot replace a reset session',async()=>{
  let resolve;let calls=0;
  const app=setup({fetch:async()=>{calls++;if(calls===1)throw new Error('Unavailable');return new Promise(done=>resolve=done);}});
- complete(app);app.click({sim:'coach'});await settle();assert.match(app.host.innerHTML,/Retry AI coaching/);
+ complete(app);app.click({sim:'coach'});await settle();assert.match(app.host.innerHTML,/Retry coaching debrief/);
  app.click({sim:'coach'});app.click({sim:'home'});resolve({ok:true,json:async()=>({text:'Stale feedback'})});await settle();
  assert.match(app.host.innerHTML,/Choose your challenge/);assert.doesNotMatch(app.host.innerHTML,/Stale feedback/);
  complete(app);assert.doesNotMatch(app.host.innerHTML,/Stale feedback|Unavailable/);

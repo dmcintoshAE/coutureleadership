@@ -447,3 +447,24 @@ h1,h2,h3{color:#4B1738}.reset{color:#A8988B}
   .cl-footer-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
   .cl-footer-links { flex-wrap: wrap; }
 }
+.v3-section{max-width:1280px;margin:auto;padding:60px 32px;color:#0F172A;background:#F9FBFD}.v3-section h2,.v3-section h3,.v3-section h4{color:#182B49}.v3-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin:24px 0}.v3-grid article{padding:24px;border:1px solid #E2E8F0;background:white}.v3-grid article>p:first-child{font-size:12px;color:#465A78}.v3-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.v3-form label{display:flex;flex-direction:column;gap:8px;font-weight:600;color:#182B49}.v3-form input,.v3-form select,.v3-form textarea{width:100%;padding:12px;border:1px solid #465A78;border-radius:4px;background:white;color:#0F172A;font:inherit}.v3-form fieldset{grid-column:1/-1;border:1px solid #E2E8F0;padding:20px}.v3-form fieldset label{display:flex;flex-direction:row;align-items:baseline;margin:10px 0;font-weight:400}.v3-form input[type=checkbox],.v3-form input[type=radio]{width:auto}.v3-form legend{font-weight:700;color:#182B49}.v3-form button,.v3-form>p,.v3-form .full{grid-column:1/-1}.v3-form button,.v3-section .primary{padding:14px 24px;background:#182B49;color:white;border:0;cursor:pointer}.v3-section a{text-decoration:underline;color:#182B49}.v3-section :focus-visible{outline:3px solid #B8860B;outline-offset:3px}.v3-notice{padding:18px;background:#F9FBFD;border:1px solid #465A78;color:#0F172A;margin-bottom:22px}.v3-section [hidden]{display:none!important}@media(max-width:650px){.v3-form{grid-template-columns:1fr}.v3-section{padding:30px 18px}}
+.workspace-account{display:flex;flex-direction:column;align-items:flex-start;gap:10px;overflow-wrap:anywhere;color:#182B49}.workspace-account .account-badge{font-size:12px;border:1px solid #465A78;padding:6px 8px;border-radius:4px}.workspace-account button{font:inherit;font-size:12px;padding:8px 10px;background:#182B49;color:#fff;border:1px solid #182B49;border-radius:4px;cursor:pointer}.workspace-account a{color:#182B49;font-size:13px;text-decoration:underline}.workspace-account :focus-visible{outline:3px solid #B8860B;outline-offset:3px}#account-status{font-size:12px}
+.sidebar{overflow-y:auto}.workspace-account{padding-top:18px}@media(max-width:800px){.sidebar{flex-wrap:wrap}.sidebar-bottom{display:block;flex-basis:100%;margin-top:8px}.sidebar-bottom .private{display:none}.workspace-account{flex-direction:row;flex-wrap:wrap;align-items:center;padding-top:10px;border-top:1px solid #E2E8F0}.workspace-account strong{font-size:14px}.workspace-account #account-status:empty{display:none}}
+/* Welcome & Discovery intake */
+.discovery-card.report-panel{border-radius:18px;background:#FAF9F7;border:1px solid #E5E0DC;padding:28px}
+.discovery-banner{box-sizing:border-box;width:100%;background:#4B1738;border-radius:14px;padding:24px 28px;color:#FFFFFF;margin-bottom:24px}
+.discovery-banner .discovery-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#E6C78B;font-weight:700;margin:0 0 12px}
+.discovery-banner h2,.v3-section .discovery-banner h2{font-size:26px;font-weight:700;color:#FFFFFF;margin:0 0 12px;line-height:1.25}
+.discovery-banner p{font-size:14px;color:#F3E8EE;line-height:1.6;margin:0}
+#discovery-form input:not([type=checkbox]):not([type=radio]),#discovery-form select{box-sizing:border-box;min-width:0;border-radius:999px;padding:12px 18px;border:1px solid #D8D2CE;background:#FFFFFF;color:#0F172A;min-height:48px}
+#discovery-form input::placeholder{color:#606775;opacity:1}
+#discovery-form input:focus-visible,#discovery-form select:focus-visible{outline:2px solid #B18A45;outline-offset:3px}
+#discovery-form fieldset{min-width:0;border:0;padding:0;margin:0}
+#discovery-form fieldset label{align-items:flex-start;gap:12px;line-height:1.5;margin:0;padding:9px 0;cursor:pointer}
+#discovery-form input[type=checkbox],#discovery-form input[type=radio]{appearance:none;flex:0 0 22px;width:22px;height:22px;padding:0;margin:1px 0 0;border:1px solid #81736D;border-radius:50%;background:white;display:grid;place-content:center;cursor:pointer}
+#discovery-form input[type=checkbox]:checked,#discovery-form input[type=radio]:checked{background:#4B1738;border-color:#4B1738}
+#discovery-form input[type=checkbox]:checked::after,#discovery-form input[type=radio]:checked::after{content:'✓';color:#FFFFFF;font-size:15px;font-weight:700}
+#discovery-form .discovery-helper{font-size:14px;color:#465A78;margin:6px 0 10px}
+#discovery-form>label,#discovery-form .full{min-width:0}
+@media(max-width:650px){.discovery-card.report-panel{padding:18px}.discovery-banner{padding:24px 20px}.discovery-banner h2{font-size:24px}}
+@media(forced-colors:active){#discovery-form input[type=checkbox],#discovery-form input[type=radio]{appearance:auto}}

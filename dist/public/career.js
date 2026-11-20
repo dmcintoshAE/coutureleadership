@@ -4,11 +4,11 @@
  const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  let profile={}, done=[], planned=false, available=true, executive;
  try {
-  const saved=JSON.parse(localStorage.getItem(key)||'{}');
+  const saved=JSON.parse((globalThis.CoutureAccount?.storage || localStorage).getItem(key)||'{}');
   fields.forEach(f=>profile[f]=typeof saved?.profile?.[f]==='string'?saved.profile[f].slice(0,1000):'');
   done=Array.from({length:6},(_,i)=>saved?.done?.[i]===true);planned=saved?.planned===true&&!!profile.targetRole?.trim();
  } catch {available=false;}
- function save(){try{localStorage.setItem(key,JSON.stringify({profile,done,planned}));}catch{available=false;}status();}
+ function save(){try{(globalThis.CoutureAccount?.storage || localStorage).setItem(key,JSON.stringify({profile,done,planned}));}catch{available=false;}status();}
  function status(){const el=host.querySelector('#career-save');if(el)el.textContent=available?'Saved in this browser · Your plan stays private.':'Browser storage is unavailable. Keep a downloaded copy; changes last for this session only.';}
  function actions(){return [
   ['Days 1–15','Define the destination',`Review three role descriptions for ${profile.targetRole}. Identify the responsibilities, scope, and evidence of impact they require.`],
