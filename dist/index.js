@@ -1,4 +1,4 @@
-﻿const path = require('node:path');
+const path = require('node:path');
 const envPath = path.resolve(__dirname, '../.env');
 try { process.loadEnvFile(envPath); } catch (e) {
   try { process.loadEnvFile('.env'); } catch (err) {}

@@ -1,4 +1,4 @@
-﻿(() => {
+(() => {
  const {scenarios,outcome}=ExecutiveSimulation;
  const labels=['Business momentum','Stakeholder trust','Operational resilience'];
  let selected=null,choices=[],revealed=false,pending=null,reflection='';

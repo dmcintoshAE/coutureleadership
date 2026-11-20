@@ -1,4 +1,4 @@
-﻿const {test}=require('node:test');
+const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const {createServer}=require('./dist/index');
 const payload={scenarioId:'growth',choices:[1,0,2],reflection:'Listen before committing.'};

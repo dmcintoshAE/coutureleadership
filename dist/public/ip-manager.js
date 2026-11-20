@@ -1,4 +1,4 @@
-﻿(() => {
+(() => {
   const STORAGE_KEY = 'couture-custom-ip-v1';
 
   function getActiveIP() {

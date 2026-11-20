@@ -1,4 +1,4 @@
-﻿(async function () {
+(async function () {
   'use strict';
   const tiers=['Free | Discover Your Leadership','Individual | My Leadership Journey','CHRO/CPO | Executive Development Partnership','Enterprise | Collective Leadership Effectiveness','Academia | Leadership Development & Career Readiness'];
   const keys={discovery:'couture-discovery-v3',diagnostic:'couture-leadership-v3-draft',career:'couture-career-architect-v1',executive:'couture-career-executive-v1'};

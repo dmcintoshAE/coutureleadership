@@ -1,4 +1,4 @@
-﻿(function(root){
+(function(root){
  'use strict';
  const key='couture-career-executive-v1';
  const questions=[

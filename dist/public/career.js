@@ -1,4 +1,4 @@
-﻿(() => {
+(() => {
  const host=document.getElementById('career'), key='couture-career-architect-v1';
  const fields=['currentRole','targetRole','horizon','strengths','growth','motivation'];
  const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

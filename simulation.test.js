@@ -1,4 +1,4 @@
-﻿const {test}=require('node:test');
+const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const {scenarios,outcome}=require('./dist/public/simulation');
 test('every scenario path has consequences and bounded outcome indicators',()=>{

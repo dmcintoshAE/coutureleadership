@@ -1,4 +1,4 @@
-﻿const {spawnSync}=require('node:child_process');
+const {spawnSync}=require('node:child_process');
 const name=`coutureleadership-verify-${process.pid}`;
 function docker(args) {
  const result=spawnSync('docker',args,{encoding:'utf8'});

@@ -1,4 +1,4 @@
-﻿const { createCoachHandler } = require('../dist/coach.js');
+const { createCoachHandler } = require('../dist/coach.js');
 
 const handler = createCoachHandler({
   env: { ...process.env, REQUIRE_PAID_COACH: 'true' },
